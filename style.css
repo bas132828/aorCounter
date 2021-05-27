@@ -1,0 +1,16 @@
+body {
+  background-color: slategray;
+  color: snow;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+.counter {
+  margin-top: 5rem;
+  font-size: 114px;
+  text-shadow: 3px 3px 3px rgb(0, 0, 0);
+}
