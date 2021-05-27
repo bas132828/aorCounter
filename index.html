@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <label for="aor">What's your aor date</label> <br />
+        <input id="aor" type="date" name="" id="" />
+      </form>
+      <div class="date-keeper"></div>
+      <div class="counter"></div>
+      <div id="reactDiv"></div>
+    </div>
+    <!-- Загрузим React. -->
+    <!-- Примечание: при деплое на продакшен замените «development.js» на «production.min.js». -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <!-- Загрузим наш React-компонент. -->
+    <script src="reactDiv.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

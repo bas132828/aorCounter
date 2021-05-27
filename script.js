@@ -1,36 +1,38 @@
-'use strict'
+"use strict";
 
 const counter = document.querySelector(".counter");
+const dateInput = document.getElementById("aor");
 
-const dateInput = document.getElementById('aor')
+let aorDay;
+const today = Date.now();
+const dateKeeper = document.querySelector(".date-keeper");
 
+const localStorageFN = function (key, value) {
+  localStorage.setItem(`${key}`, `${value}`);
+};
 
+const renderUI = function (days) {
+  counter.textContent = days;
+  days < 20 || days > 200
+    ? (counter.style.fontSize = "20px")
+    : (counter.style.fontSize = `${days}px`);
+};
+const calcDaysLeft = function (data) {
+  aorDay = new Date(data).getTime();
+  const difference = today - aorDay;
+  return Math.floor(difference / 1000 / 60 / 60 / 24);
+};
 
-const localStorageFN = function(key, value) {
-    localStorage.setItem(`${key}`, `${value}`)
-} 
-console.log(dateInput)
-
-let aorDateInput = '';
-
-
-
-let aorDay
-
-
-const getAorDate = function() {
-    aorDateInput = dateInput.value ;
-    console.log(aorDateInput)
-    aorDay = new Date(aorDateInput).getTime();
-    const today = Date.now();
-
-const difference = today - aorDay;
-const daysGone = Math.floor(difference / 1000 / 60 / 60 / 24);
-counter.textContent = daysGone;
-counter.style.fontSize = `${daysGone}px`;
-localStorageFN('date', aorDateInput)
+if (localStorage.getItem("date")) {
+  dateKeeper.textContent = localStorage.getItem("date");
+  renderUI(calcDaysLeft(dateKeeper.textContent));
 }
 
+const getAorDate = function () {
+  dateKeeper.textContent = dateInput.value;
 
-dateInput.addEventListener('change', getAorDate)
+  renderUI(calcDaysLeft(dateInput.value));
+  localStorageFN("date", dateKeeper.textContent);
+};
 
+dateInput.addEventListener("change", getAorDate);
